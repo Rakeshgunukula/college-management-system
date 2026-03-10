@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00FF41; /* Matrix Green */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            border: 2px solid #333;
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+            border-radius: 10px;
+        }
+
+        /* Access Denied Styles */
+        .denied {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        .denied .icon { font-size: 80px; margin-bottom: 20px; }
+
+        /* Access Granted Styles */
+        .granted {
+            color: #00FF41;
+            text-shadow: 0 0 10px #00FF41;
+        }
+        .granted .icon { font-size: 80px; margin-bottom: 20px; }
+
+        .glitch {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 4px;
+            background: #00FF41;
+            margin-top: 20px;
+            transition: width 2s linear;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="status-box" class="container">
+        </div>
+
+    <script>
+        const statusBox = document.getElementById('status-box');
+const urlParams = new URLSearchParams(window.location.search);
+const status = urlParams.get('auth');
+const role = urlParams.get('role'); // Role ni capture chestunnam
+
+if (status === 'success') {
+    // Role batti message decide chestunnam
+    // const dashboardName = (role === 'teacher') ? "Teacher Dashboard" : "Admin Dashboard";
+    // const userIcon = (role === 'teacher') ? "👩‍🏫💻" : "👑💻";
+    let dashboardName = '';
+    let userIcon = '';
+    if(role === 'teacher'){
+        dashboardName = 'Teacher Dashboard';
+        userIcon = '👩‍🏫💻';
+    }
+    else if(role === 'admin'){
+        dashboardName = 'Admin Dashboard';
+        userIcon = '👑💻';
+    }
+    else {
+        dashboardName = 'Student Dashboard';
+        userIcon = '👩‍🏫💻';
+    }
+
+    statusBox.innerHTML = `
+        <div class="granted">
+            <div class="icon">${userIcon}</div>
+            <div class="glitch">ACCESS GRANTED</div>
+            <p id="msg">Verifying ${role} credentials...</p>
+            <p>Redirecting to ${dashboardName}...</p>
+            <div class="loading-bar" id="bar"></div>
+        </div>
+    `;
+
+    setTimeout(() => { document.getElementById('bar').style.width = '100%'; }, 100);
+    
+    setTimeout(() => {
+        if (role === 'teacher') {
+            window.location.replace("teacher.html");
+        } else if(role === 'admin') {
+            window.location.replace("admin.html");
+        }
+        else{
+            window.location.replace("students.html");
+        }
+    }, 2000);
+
+} else {
+    // Fail message kuda role batti pettocchu (Optional)
+    statusBox.innerHTML = `
+        <div class="denied">
+            <div class="icon">💀</div>
+            <div class="glitch">ACCESS DENIED</div>
+            <p>Invalid Login Attempt</p>
+            <button onclick="window.location.href='index.html'" 
+                style="background:none; border:1px solid red; color:red; cursor:pointer; padding:5px 15px; margin-top:10px;">
+                Back to Login
+            </button>
+        </div>
+    `;
+}
+    </script>
+</body>
+</html>

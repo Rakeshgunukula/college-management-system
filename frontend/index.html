@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="main.css">
+<title>Multi Login Portal</title>
+</head>
+<body>
+
+<div class="container">
+
+<div class="left-panel">
+<h2>Select Login</h2>
+<button class="role-btn" onclick="showForm('admin')">Admin</button>
+<button class="role-btn" onclick="showForm('student')">Student</button>
+<button class="role-btn" onclick="showForm('teacher')">Teacher</button>
+</div>
+
+<div class="right-panel">
+
+<div class="form-box active" id="admin">
+<form id="adminForm">
+<h2>Admin Login</h2>
+<div class="input-box">
+<input type="email" required placeholder=" " id="adminName" tabindex="1">
+<label>Username</label>
+</div>
+<div class="input-box">
+<input type="password" required placeholder=" " id="adminPassword">
+<label>Password</label>
+</div>
+<button class="login-btn">Login</button>
+</form>
+</div>
+
+<div class="form-box" id="student">
+<form id="studentForm">
+<h2>Student Login</h2>
+<div class="input-box">
+<input type="text" required placeholder=" " id="studentRollNo">
+<label>Roll Number</label>
+</div>
+<div class="input-box">
+<input type="password" required placeholder=" " id="studentPass">
+<label>Password</label>
+</div>
+<button class="login-btn">Login</button>
+</form>
+</div>
+
+<div class="form-box" id="teacher">
+<form id="teacherForm">
+<h2>Teacher Login</h2>
+<div class="input-box">
+<input type="email" required placeholder=" " id="teacherEmail">
+<label>Email</label>
+</div>
+<div class="input-box">
+<input type="password" required placeholder=" " id="teacherPassword">
+<label>Password</label>
+</div>
+<button class="login-btn">Login</button>
+</form>
+</div>
+
+</div>
+</div>
+
+<script src="main.js">
+</script>
+
+</body>
+</html>
