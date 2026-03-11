@@ -181,5 +181,5 @@ const logOut = document.getElementById('logout');
 logOut.addEventListener('click', () => {
     localStorage.removeItem('token');
     alert('Logged Out Successfully');
-    window.location.replace("index.html");
+    window.location.replace("/login");
 })

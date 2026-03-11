@@ -65,7 +65,7 @@ window.onload = () => {
 function logout(){
 localStorage.removeItem('token');
 alert('Logged Out Successfully');
-window.location.replace("index.html");
+window.location.replace("/login");
 }
 
 /* Dynamic Example */
