@@ -47,16 +47,34 @@
             letter-spacing: 5px;
         }
 
-        .loading-bar {
+        .loading-bar{
             width: 0%;
             height: 4px;
             background: #00FF41;
             margin-top: 20px;
-            transition: width 2s linear;
+            transition: width 2.5s linear;
         }
+
+        .topbar{
+            position: fixed;
+            top:0;
+            left:0;
+            width:0%;
+            height: 3px;
+            background:#00FF41;
+            box-sizing: 0 0 10px #00ff41;
+            z-index: 9999;
+            transition: width 2.5s ease;
+        }
+        .topbar.active{
+            width:100%;
+        }
+
+        
     </style>
 </head>
 <body>
+    <div class="topbar" id="topbar"></div>
 
     <div id="status-box" class="container">
         </div>
@@ -96,7 +114,10 @@ if (status === 'success') {
         </div>
     `;
 
-    setTimeout(() => { document.getElementById('bar').style.width = '100%'; }, 100);
+    setTimeout(() => { 
+        document.getElementById('bar').style.width = '100%'; 
+        document.getElementById('topbar').classList.add('active');
+    }, 300);
     
     setTimeout(() => {
         if (role === 'teacher') {
@@ -107,7 +128,7 @@ if (status === 'success') {
         else{
             window.location.replace("/student-dashboard");
         }
-    }, 2000);
+    }, 2500);
 
 } else {
     // Fail message kuda role batti pettocchu (Optional)
