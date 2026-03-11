@@ -24,10 +24,10 @@ if (res.ok) {
     localStorage.setItem('token', data.token);
     localStorage.setItem('role', 'admin');
     // Success ayite status page ki pampu with success param
-    window.location.replace('status.html?auth=success&role=admin');
+    window.location.replace('/status?auth=success&role=admin');
 } else {
     // Fail ayite status page ki pampu with fail param
-    window.location.href = "status.html?auth=fail";
+    window.location.replace("/status?auth=fail");
 }
 })
 
@@ -54,10 +54,10 @@ teacherForm.addEventListener('submit', async (e) => {
             localStorage.setItem('token', data.token);
             localStorage.setItem('role', 'teacher');
 
-            window.location.replace('status.html?auth=success&role=teacher');
+            window.location.replace('/status?auth=success&role=teacher');
         } else {
 
-            window.location.replace('index.html');
+            window.location.replace('/login');
         }
     } catch (err) {
         alert('server error');
@@ -85,12 +85,11 @@ studentForm.addEventListener('submit', async (e) => {
     if (res.ok) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', 'student');
-        window.location.replace("status.html?auth=success&role=student");
+        window.location.replace("/status?auth=success&role=student");
     } else {
-        window.location.replace("status.html?auth=fail");
+        window.location.replace("/status?auth=fail");
     }
 });
-
 
 
 // checking token  on page load
@@ -101,13 +100,16 @@ studentForm.addEventListener('submit', async (e) => {
     if (token) {
 
         if(role === 'admin'){
-            window.location.replace('admin.html');
+            window.location.replace('/admin-dashboard');
         }
         else if(role === 'teacher'){
-            window.location.replace('teacher.html');
+            window.location.replace('/teacher-dashboard');
         }
         else if(role === 'student'){
-            window.location.replace('students.html');
+            window.location.replace('/student-dashboard');
+        }
+        else{
+            window.location.replace('/login');
         }
     
     }

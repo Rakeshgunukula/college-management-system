@@ -86,5 +86,6 @@ studentsFetching()
 const logout = document.getElementById('logout');
 logout.addEventListener('click', () => {
     localStorage.removeItem('token');
+    alert('Logging Out Successfully');
     window.location.replace('index.html');
 })

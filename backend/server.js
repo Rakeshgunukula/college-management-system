@@ -11,11 +11,32 @@ dotEnv.config()
 
 const app = express()
 
-app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
-})
+// app.get('/', (req,res) => {
+//     res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+// })
 app.use(cors())
 app.use(express.static(path.join(__dirname, '../frontend')));
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+})
+app.get('/admin-dashboard', (req,res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'admin.html'));
+});
+
+app.get('/teacher-dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'teacher.html'));
+});
+
+app.get('/student-dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'students.html'));
+})
+
+// animation route
+
+app.get('/status', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'status.html'));
+})
 app.use(express.json())
 app.use('/api/admin', adminRoutes);
 app.use('/api/teacher', teacherRoutes)

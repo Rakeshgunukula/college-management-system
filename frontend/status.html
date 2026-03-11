@@ -100,12 +100,12 @@ if (status === 'success') {
     
     setTimeout(() => {
         if (role === 'teacher') {
-            window.location.replace("teacher.html");
+            window.location.replace("/teacher-dashboard");
         } else if(role === 'admin') {
-            window.location.replace("admin.html");
+            window.location.replace("/admin-dashboard");
         }
         else{
-            window.location.replace("students.html");
+            window.location.replace("/student-dashboard");
         }
     }, 2000);
 
@@ -116,7 +116,7 @@ if (status === 'success') {
             <div class="icon">💀</div>
             <div class="glitch">ACCESS DENIED</div>
             <p>Invalid Login Attempt</p>
-            <button onclick="window.location.href='index.html'" 
+            <button onclick="window.location.replace('/login')" 
                 style="background:none; border:1px solid red; color:red; cursor:pointer; padding:5px 15px; margin-top:10px;">
                 Back to Login
             </button>
