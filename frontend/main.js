@@ -57,7 +57,7 @@ teacherForm.addEventListener('submit', async (e) => {
             window.location.replace('/status?auth=success&role=teacher');
         } else {
 
-            window.location.replace('/login');
+            window.location.replace('/status?auth=fail');
         }
     } catch (err) {
         alert('server error');

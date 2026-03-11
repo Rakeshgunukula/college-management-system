@@ -17,9 +17,20 @@ body::before{ content:""; position:absolute; width:400px; height:400px; border-r
 .sidebar.active { left: 0; }
 .sidebar ul { list-style: none; margin-top: 50px; }
 .sidebar ul li { padding: 14px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sidebar ul li:hover{
+    background:rgba(0,0,0,0.5);
+}
+.main { padding: 20px; padding-top: 100px; position: relative; z-index: 1; transition: all .8s ease; top:-400px; transform: scale(0);}
+.main.active {
+    top:0;
+    transform:scale(1);
+}
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; transform:translateY(300px) scale(0); opacity: 0; transition: all 1s ease;}
+.cards.active{
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
 
-.main { padding: 20px; padding-top: 100px; position: relative; z-index: 1; }
-.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
 .card { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); padding: 18px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
 
 .addstudents { background: transparent; border: 1px solid rgba(255,255,255,0.2); padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; }

@@ -99,6 +99,14 @@ body::before{
     padding-top: 90px; /* Space for fixed navbar */
     position: relative;
     z-index: 1;
+    top:-400px;
+    transition:all .8s ease;
+    transform:scale(0);
+}
+
+.main.active{
+    top:0;
+    transform: scale(1);
 }
 
 /* ===== CARDS ===== */
@@ -241,7 +249,7 @@ th, td {
 
 <div id="overlay"></div>
 
-<div class="main">
+<div class="main" id="main">
     <div class="cards">
         <div class="card">
             <h3 id="studentCgpa"></h3>

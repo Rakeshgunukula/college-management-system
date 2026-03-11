@@ -12,6 +12,13 @@ sidebar.classList.remove("active");
 overlay.classList.remove("active");
 });
 
+window.onload = () => {
+
+    document.querySelector('.main').classList.add('active');
+    document.querySelector('.cards').classList.add('active');
+
+}
+
 
 // fetching to add send student data
 

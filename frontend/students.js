@@ -58,6 +58,7 @@ window.onload = () => {
     loadStudentProfile();
         document.querySelector('.cards').classList.add('active');
         document.querySelector('.card').classList.add('active');
+        document.querySelector('#main').classList.add('active');
 
 }
 
