@@ -38,7 +38,7 @@ if (res.ok) {
 // Teacher Login Form Script
 const teacherLoginForm = document.getElementById('teacherForm');
 
-teacherForm.addEventListener('submit', async (e) => {
+teacherLoginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('teacherEmail').value;
     const password = document.getElementById('teacherPassword').value;
@@ -113,4 +113,3 @@ studentForm.addEventListener('submit', async (e) => {
         }
     
     }
-
